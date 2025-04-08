@@ -1,0 +1,52 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Georgia", serif;
+}
+
+//Styling til Headeren (menyen)
+.menu {
+  background-color: #744bbb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: white;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .team {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .navList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+//Styling for mobil
+@media (max-width: 600px) {
+  //Styling for Headeren (menyen)
+  .menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    .navList {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+}
