@@ -14,6 +14,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+} //Skal
 
 export default App;
