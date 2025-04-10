@@ -14,6 +14,6 @@ export default function Header() {
         <Link to="/aynazar">Aynazar</Link>
         <Link to="/marte">Marte</Link>
       </nav>
-    </header>
+    </header> //Jeg liker iste
   );
 }
