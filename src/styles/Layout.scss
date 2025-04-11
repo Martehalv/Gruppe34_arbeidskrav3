@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0 auto;
   padding: 0;
@@ -6,7 +10,7 @@ body {
 
 //Styling til Headeren (menyen)
 .menu {
-  background-color: #744bbb;
+  background-color: #ff3da8;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,6 +18,8 @@ body {
   color: white;
   flex-wrap: wrap;
   width: 100%;
+  position: fixed;
+  top: 0;
 
   .team {
     font-size: 1.2rem;
@@ -24,7 +30,7 @@ body {
   .navList {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 18px;
     align-items: center;
 
     a {
@@ -33,6 +39,14 @@ body {
       font-size: 0.9rem;
     }
   }
+}
+
+//Main CSS
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 //Styling for mobil

@@ -5,7 +5,9 @@ import "../styles/Layout.scss";
 export default function Header() {
   return (
     <header className="menu">
-      <Link to="/" className="team">TEAM 34</Link>
+      <Link to="/" className="team">
+        TEAM 34
+      </Link>
       <nav className="navList">
         <Link to="/">Hjem</Link>
         <span>|</span>
@@ -14,6 +16,6 @@ export default function Header() {
         <Link to="/aynazar">Aynazar</Link>
         <Link to="/marte">Marte</Link>
       </nav>
-    </header> //Jeg liker iste
+    </header> //Jeg liker iste    (?)
   );
 }
