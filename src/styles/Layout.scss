@@ -55,6 +55,21 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  #groupmembers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+
+    article {
+      flex: 1 1 calc(25% - 20px);
+      box-sizing: border-box;
+      padding: 2rem;
+      border: 2px solid #ff3da8;
+      border-radius: 2px;
+    }
+  }
 }
 
 //Styling for mobil
@@ -70,5 +85,16 @@ main {
       align-items: flex-start;
       gap: 8px;
     }
+  }
+
+  //Styling for Main
+  #groupmembers {
+    flex-direction: column; /* Endrer retning til vertikal på små skjermer */
+    align-items: center; /* Sentrerer artiklene */
+  }
+
+  article {
+    flex: 1 1 100%; /* Gjør at artiklene får 100% bredde på små skjermer */
+    margin-bottom: 20px; /* Legger til litt margin under artiklene */
   }
 }
