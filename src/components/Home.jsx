@@ -1,36 +1,40 @@
-// Home.jsx
-export default function Home() {
-  return (
-    //Må bytte ut innholde med dynamisk kode i artiklene!
-    <>
-      <main>
-        <h2>Gruppemedlemmer</h2>
-        <section id="groupmembers">
-          <article>
-            <img src="https://cdn.pixabay.com/photo/2021/09/18/15/59/boat-8219886_960_720.jpg" />
-            <p>Navn</p>
-            <p>Email</p>
-          </article>
-          <article>
-            <img src="https://pixabay.com/photos/boat-water-rope-lake-wooden-boat-8219886/" />
-            <p>Navn</p>
-            <p>Email</p>
-          </article>
-          <article>
-            <img src="https://pixabay.com/photos/boat-water-rope-lake-wooden-boat-8219886/" />
-            <p>Navn</p>
-            <p>Email</p>
-          </article>
-          <article>
-            <img src="https://pixabay.com/photos/boat-water-rope-lake-wooden-boat-8219886/" />
-            <p>Navn</p>
-            <p>Email</p>
-          </article>
-        </section>
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import sanityCli from "../ressurser";
 
-        <h2>Arbeidslogg</h2>
-        <section></section>
-      </main>
-    </>
+export default function Home() {
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    sanityCli
+      .fetch(
+        `*[_type == "name"]{
+          name,
+          email,
+          "imageUrl": image.asset->url,
+          slug
+        }`
+      )
+      .then((data) => setMembers(data))
+      .catch(console.error);
+  }, []);
+
+  return (
+    <main>
+      <h2>Gruppemedlemmer</h2>
+      <section id="groupmembers">
+        {members.map((member, index) => (
+          <article key={index}>
+            <Link to={`/member/${member.slug.current}`}>
+              <img src={member.imageUrl} alt={member.name} />
+              <p>{member.name}</p>
+              <p>{member.email}</p>
+            </Link>
+          </article>
+        ))}
+      </section>
+      <h2>Arbeidslogg</h2>
+      <section></section>
+    </main>
   );
 }
