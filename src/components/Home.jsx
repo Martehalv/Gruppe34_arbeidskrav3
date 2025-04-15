@@ -1,4 +1,3 @@
-// Home.jsx
 export default function Home() {
   return (
     //Må bytte ut innholde med dynamisk kode i artiklene!
