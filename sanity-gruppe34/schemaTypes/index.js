@@ -1,4 +1,4 @@
-import {jentegruppe} from './jentegruppe'
+import {teamMember} from './teamMember'
 import {Logg} from './Logg'
 
-export const schemaTypes = [jentegruppe, Logg]
+export const schemaTypes = [teamMember, Logg]
