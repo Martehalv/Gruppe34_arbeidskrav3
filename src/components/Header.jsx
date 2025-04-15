@@ -1,4 +1,3 @@
-// Header.jsx
 import { Link } from "react-router-dom";
 import "../styles/Layout.scss";
 
@@ -16,6 +15,6 @@ export default function Header() {
         <Link to="/aynazar">Aynazar</Link>
         <Link to="/marte">Marte</Link>
       </nav>
-    </header> //Jeg liker iste    (?)
+    </header>
   );
 }
