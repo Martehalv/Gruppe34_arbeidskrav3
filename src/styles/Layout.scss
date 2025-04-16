@@ -90,12 +90,12 @@ main {
 
   //Styling for Main
   #groupmembers {
-    flex-direction: column; /* Endrer retning til vertikal på små skjermer */
-    align-items: center; /* Sentrerer artiklene */
+    flex-direction: column;
+    align-items: center;
   }
 
   article {
-    flex: 1 1 100%; /* Gjør at artiklene får 100% bredde på små skjermer */
-    margin-bottom: 20px; /* Legger til litt margin under artiklene */
+    flex: 1 1 100%;
+    margin-bottom: 20px;
   }
 }
