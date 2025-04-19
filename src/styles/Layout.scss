@@ -89,13 +89,47 @@ main {
   }
 
   //Styling for Main
-  #groupmembers {
-    flex-direction: column;
-    align-items: center;
-  }
 
   article {
     flex: 1 1 100%;
     margin-bottom: 20px;
+  }
+}
+
+
+#groupmembers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  article {
+    flex: 1 1 calc(25% - 20px); /* Gir plass til 4 medlemmer på én rad */
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 2px solid #ff3da8;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05); /* Lite zoom ved hover for bedre visuell effekt */
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 120px; /* Sett maks-bredde på bildene */
+      border-radius: 50%; /* Gjør bildet rundt for en finere effekt */
+      margin-bottom: 10px; /* Litt plass mellom bilde og tekst */
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 1rem;
+      color: #333;
+    }
   }
 }
