@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // For å hente slug fra URL
-import { client } from "../sanityClient"; // Importere Sanity-klienten
+import { useParams } from "react-router-dom";
+import { client } from "../sanityClient"; 
+import "../styles/memberDetail.css"; // Importere den nye CSS-filen fra 'src/styles'
+
 
 export default function MemberDetail() {
   const { slug } = useParams(); // Hent slug fra URL
@@ -38,30 +40,45 @@ export default function MemberDetail() {
   if (!member) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h2>{member.name}</h2>
-      <img src={member.image?.asset?.url || "path/to/default.jpg"} alt={member.name} />
-      <p>{member.email}</p>
-      <p>{member.bio}</p>
-      <h3>Interesser</h3>
-      <ul>
-        {member.interests?.map((interest, index) => (
-          <li key={index}>{interest}</li>
-        ))}
-      </ul>
-
-      <h3>Arbeidslogg</h3>
-      <ul>
+    <div className="profile-wrapper">
+      <div className="profile-container">
+        <div className="profile-left">
+          <img
+            src={member.image?.asset?.url || "path/to/default.jpg"}
+            alt={member.name}
+            className="profile-image"
+          />
+        </div>
+  
+        <div className="profile-right">
+          <h2>{member.name}</h2>
+          <p>{member.email}</p>
+          <p className="bio">{member.bio}</p>
+  
+          <div className="interests">
+            <h3>Interesser</h3>
+            <ul>
+              {member.interests?.map((interest, index) => (
+                <li key={index}>{interest}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div className="log-entry">
+        <h3>Arbeidslogg</h3>
         {logs.length === 0 ? (
           <p>Ingen arbeidslogg tilgjengelig</p>
         ) : (
-          logs.map((log) => (
-            <li key={log.dato}>
-              <strong>{log.dato}</strong>: {log.beskrivelse}
-            </li>
-          ))
+          <ul>
+            {logs.map((log) => (
+              <li key={log.dato}>
+                <strong>{log.dato}</strong>: {log.beskrivelse}
+              </li>
+            ))}
+          </ul>
         )}
-      </ul>
+      </div>
     </div>
-  );
-}
+  )};
