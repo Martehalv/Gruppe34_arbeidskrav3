@@ -17,9 +17,9 @@ export const teamMember = {
         slugify: (input) =>
           input
             .toLowerCase()
-            .replace(/\s+/g, '-') //Mellomrom om til bindestrek
+            .replace(/\s+/g, '-') // Mellomrom om til bindestrek
             .replace(/[åæø]/g, (char) => ({å: 'a', ø: 'o', æ: 'e'})[char] || char)
-            .replace(/[^a-z0-9-]/g, '') //Fjerne rare tegn
+            .replace(/[^a-z0-9-]/g, '') // Fjerne rare tegn
             .slice(0, 50),
         maxLength: 50,
       },
@@ -46,4 +46,4 @@ export const teamMember = {
       of: [{type: 'string'}],
     },
   ],
-}
+};

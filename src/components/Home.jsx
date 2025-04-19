@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Importere Link fra react-router-dom
 import { client } from "../sanityClient"; // Importere Sanity-klienten
-import LogEntry from "./LogEntry"; // Importere LogEntry-komponenten
 
 export default function Home() {
   const [members, setMembers] = useState([]); // State for å lagre medlemmene
@@ -13,7 +13,8 @@ export default function Home() {
         asset -> {
           url
         }
-      }
+      },
+      slug // Vi henter slug for å lage en rute til hver profil
     }`;
 
     const fetchMembers = async () => {
@@ -33,18 +34,18 @@ export default function Home() {
         ) : (
           members.map((member) => (
             <article key={member.name}>
-              <img
-                src={member.image?.asset?.url || "path/to/default.jpg"}
-                alt={member.name}
-              />
-              <p>{member.name}</p>
-              <p>{member.email}</p>
+              <Link to={`/team/${member.slug.current}`}>
+                <img
+                  src={member.image?.asset?.url || "path/to/default.jpg"}
+                  alt={member.name}
+                />
+                <p>{member.name}</p>
+                <p>{member.email}</p>
+              </Link>
             </article>
           ))
         )}
       </section>
-
-      <LogEntry /> {/* Legg til LogEntry-komponenten her for å vise arbeidsloggen */}
     </main>
   );
 }
