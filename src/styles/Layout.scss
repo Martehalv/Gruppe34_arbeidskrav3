@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -6,7 +8,7 @@ html,
 body {
   margin: 0 auto;
   padding: 0;
-  font-family: "Georgia", serif;
+  font-family: "Montserrat", sans-serif;
   background-color: #fff;
   color: #121212;
 }
@@ -15,7 +17,7 @@ body {
   width: 100%;
 }
 
-//Header CSS (menyen)
+//Header CSS
 .menu {
   background-color: #ff3da8;
   display: flex;
@@ -104,7 +106,7 @@ main {
   margin-top: 20px;
 
   article {
-    flex: 1 1 calc(25% - 20px); /* Gir plass til 4 medlemmer på én rad */
+    flex: 1 1 calc(25% - 20px); /*Gir plass til 4 medlemmer på én rad*/
     box-sizing: border-box;
     padding: 1rem;
     border: 2px solid #ff3da8;
@@ -114,21 +116,21 @@ main {
     transition: transform 0.2s ease-in-out;
 
     &:hover {
-      transform: scale(1.05); /* Lite zoom ved hover for bedre visuell effekt */
+      transform: scale(1.05); /*Lite zoom ved hover for bedre visuell effekt*/
     }
 
     img {
       width: 100%;
       height: auto;
-      max-width: 120px; /* Sett maks-bredde på bildene */
-      border-radius: 50%; /* Gjør bildet rundt for en finere effekt */
-      margin-bottom: 10px; /* Litt plass mellom bilde og tekst */
+      max-width: 120px; /*Sett maks-bredde på bildene*/
+      border-radius: 50%; /*Gjør bildet rundt for en finere effekt*/
+      margin-bottom: 10px; /*Litt plass mellom bilde og tekst*/
     }
 
     p {
       margin: 5px 0;
       font-size: 1rem;
-      color: #333;
+      color: black;
     }
   }
 }
