@@ -15,7 +15,7 @@ body {
   width: 100%;
 }
 
-//Styling til Headeren (menyen)
+//Header CSS (menyen)
 .menu {
   background-color: #ff3da8;
   display: flex;
@@ -88,14 +88,13 @@ main {
     }
   }
 
-  //Styling for Main
+  //Main CSS
 
   article {
     flex: 1 1 100%;
     margin-bottom: 20px;
   }
 }
-
 
 #groupmembers {
   display: flex;
