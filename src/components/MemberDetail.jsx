@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { client } from "../sanityClient"; 
-import "../styles/memberDetail.css"; // Importere den nye CSS-filen fra 'src/styles'
+import "../styles/memberDetail.css";
 
 
 export default function MemberDetail() {
-  const { slug } = useParams(); // Hent slug fra URL
-  const [member, setMember] = useState(null); // State for å lagre medlemmet
-  const [logs, setLogs] = useState([]); // State for å lagre arbeidsloggen
+  const { slug } = useParams(); //Hent slug-parameteren fra URL-en
+  const [member, setMember] = useState(null); //Lager en state for å lagre detaljene til ett medlem
+  const [logs, setLogs] = useState([]); //Lager en state for å lagre arbeidslogg
 
   useEffect(() => {
+    //GROQ forespørsel for å hente teammedlem basert på slug
     const memberQuery = `*[_type == "teamMember" && slug.current == $slug][0]{
       name,
       email,
@@ -22,11 +23,13 @@ export default function MemberDetail() {
       interests
     }`;
 
+    //GROQ forspørsel for å hente arbeidslogger som matcher navnet/slug
     const logQuery = `*[_type == "logg" && navn == $slug]{
       dato,
       beskrivelse
     }`;
 
+    //Funksjon som kjører begge forespørsmålene og lagrer resultatene i state
     const fetchMemberData = async () => {
       const memberData = await client.fetch(memberQuery, { slug });
       const logData = await client.fetch(logQuery, { slug });
@@ -34,10 +37,10 @@ export default function MemberDetail() {
       setLogs(logData);
     };
 
-    fetchMemberData();
-  }, [slug]);
+    fetchMemberData(); //Kaller funksjonen når komponenten rendres
+  }, [slug]); //Kjører på nytt når slug endres
 
-  if (!member) return <p>Loading...</p>;
+  if (!member) return <p>Laster..</p>; //Viser "Laster.." mens medlem data hentes
 
   return (
     <div className="profile-wrapper">
@@ -59,7 +62,7 @@ export default function MemberDetail() {
             <h3>Interesser</h3>
             <ul>
               {member.interests?.map((interest, index) => (
-                <li key={index}>{interest}</li>
+                <li key={index}>{interest}</li> //Lager en liste for alle interesser
               ))}
             </ul>
           </div>
@@ -68,11 +71,12 @@ export default function MemberDetail() {
   
       <div className="log-entry">
         <h3>Arbeidslogg</h3>
-        {logs.length === 0 ? (
+        {logs.length === 0 ? ( //Hvis det ikke finnes noen logger, viser <p>
           <p>Ingen arbeidslogg tilgjengelig</p>
         ) : (
           <ul>
             {logs.map((log) => (
+              //Viser dato + beskrivelse
               <li key={log.dato}>
                 <strong>{log.dato}</strong>: {log.beskrivelse}
               </li>
