@@ -6,11 +6,11 @@ import "./styles/Layout.scss";
 
 function App() {
   return (
-    <Router> {/*Pakker inn hele appen med Router slik at routing fungerer*/}
-      <Header /> {/*Header vises alltid uansett hvilken route vi er på*/}
+    <Router>
+      <Header />
       <Routes>
-        <Route path="/" element={<Home />} />  {/*Route for forsiden som viser gruppemedlemmene*/}
-        <Route path="/team/:slug" element={<MemberDetail />} /> {/* Rute for individuelle profiler basert på slug*/}
+        <Route path="/" element={<Home />} />
+        <Route path="/team/:slug" element={<MemberDetail />} />
       </Routes>
     </Router>
   );
