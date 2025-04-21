@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { client } from "../sanityClient"; 
-import "../styles/memberDetail.css";
-
+import { client } from "../sanityClient";
+import "../styles/memberDetail.scss";
 
 export default function MemberDetail() {
   const { slug } = useParams(); //Hent slug-parameteren fra URL-en
@@ -52,12 +51,12 @@ export default function MemberDetail() {
             className="profile-image"
           />
         </div>
-  
+
         <div className="profile-right">
           <h2>{member.name}</h2>
           <p>{member.email}</p>
           <p className="bio">{member.bio}</p>
-  
+
           <div className="interests">
             <h3>Interesser</h3>
             <ul>
@@ -68,16 +67,15 @@ export default function MemberDetail() {
           </div>
         </div>
       </div>
-  
+
       <div className="log-entry">
         <h3>Arbeidslogg</h3>
         {logs.length === 0 ? ( //Hvis det ikke finnes noen logger, viser <p>
           <p>Ingen arbeidslogg tilgjengelig</p>
         ) : (
           <ul>
-            {logs.map((log) => (
-              //Viser dato + beskrivelse
-              <li key={log.dato}>
+            {logs.map((log, index) => (
+              <li key={`${log.dato}-${index}`}>
                 <strong>{log.dato}</strong>: {log.beskrivelse}
               </li>
             ))}
@@ -85,4 +83,5 @@ export default function MemberDetail() {
         )}
       </div>
     </div>
-  )};
+  );
+}
